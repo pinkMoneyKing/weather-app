@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import {SearchCurrentWeatherByZipCode} from '../api/WeatherApiCalls';
 
 class SearchBar extends Component {
 	constructor(props){
 		super(props);
-		this.state = {
-				error: null,
-				location: 78751,
-				weather: {},
-			};
+		this.state = null;
+		this.handleChange = this.handleChange.bind(this);
+		this.submitForm = this.submitForm.bind(this);
+	}
+	handleChange(event){
+		event.preventDefault();
+		this.props.changeZipCode(event.target.value);
+	}
+	submitForm(event){
+		event.preventDefault();
+		this.props.searchZipCode();
 	}
 	render(){
 		const {
@@ -20,13 +25,12 @@ class SearchBar extends Component {
 		console.log('weather', weather);
 		return(
 			<div>
-				<div>Current City {weather.name}</div>
-				<form onSubmit={searchZipCode}>
+				<form onSubmit={this.submitForm}>
 					<label>
 						Search By Zip Code
 						<input 
 							type="text" 
-							onChange={changeZipCode}
+							onChange={this.handleChange}
 							value={zipCode}
 							name="Zip Code" />
 					</label>
@@ -37,4 +41,4 @@ class SearchBar extends Component {
 	}
 }
 
-export default SearchCurrentWeatherByZipCode(SearchBar);
+export default SearchBar;

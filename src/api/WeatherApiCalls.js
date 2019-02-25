@@ -13,32 +13,31 @@ export function SearchCurrentWeatherByZipCode(WrappedComponent){
 		constructor(props){
 			super(props);
 			this.state = {
-				selectedCityZipCode: '',
+				cityLoaded: false,
+				selectedCityZipCode: '78751',
 				weather: {},
 			}
 			this.changeZipCode = this.changeZipCode.bind(this);
 			this.searchZipCode = this.searchZipCode.bind(this);
 		}
+		
 
-		changeZipCode(event){
-			event.preventDefault();
-			console.log(event.target.value);
+		changeZipCode(zipCode){
 			this.setState({
-				selectedCityZipCode: event.target.value
+				selectedCityZipCode: zipCode
 			});
 		}
 
-		searchZipCode(event){
-			event.preventDefault();
+		searchZipCode(){
 			const current_location = this.state.selectedCityZipCode;
-			event.preventDefault();
-			console.log('searching for city', current_location);
+			this.setState({cityLoaded: false});
 			fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${current_location}&units=imperial&APPID=2e6df9d6535a9357d1c523ac78374cf2`)
 			.then(res => res.json())
 			.then(
 				(result) => {
 					this.setState({
-						weather: result
+						weather: result,
+						cityLoaded: true,
 						});
 					},
 				(error) => {
@@ -48,10 +47,13 @@ export function SearchCurrentWeatherByZipCode(WrappedComponent){
 
 
 		componentDidMount(){
+			// Default City is Austin
+			this.searchZipCode();
 		};
 		render(){
 			return (
 				<WrappedComponent 
+					cityLoaded={this.state.cityLoaded}
 					changeZipCode={this.changeZipCode}
 					searchZipCode={this.searchZipCode}
 					zipCode={this.state.selectedCityZipCode}
