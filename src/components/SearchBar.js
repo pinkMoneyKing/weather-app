@@ -13,16 +13,15 @@ class SearchBar extends Component {
 	}
 	submitForm(event){
 		event.preventDefault();
-		this.props.searchZipCode();
+		this.props.searchByZipCode();
 	}
 	render(){
 		const {
 			weather,
 			zipCode,
-			searchZipCode,
+			searchByZipCode,
 			changeZipCode,
 			} = this.props;
-		console.log('weather', weather);
 		return(
 			<div>
 				<form onSubmit={this.submitForm}>

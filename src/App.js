@@ -12,7 +12,7 @@ class App extends Component {
 			currentWeatherLoaded,
 			forecastLoaded,
 			zipCode,
-			searchZipCode,
+			searchByZipCode,
 			changeZipCode,
 			} = this.props;
 		console.log('forecast', forecast);
@@ -21,8 +21,8 @@ class App extends Component {
 				<SearchBar 
 					weather={weather}
 					zipCode={zipCode}
-					searchZipCode={searchZipCode}
 					changeZipCode={changeZipCode}
+					searchByZipCode={searchByZipCode}
 				/>
 				<div>Current Weather For : <strong>{weather.name}</strong></div>
 				{currentWeatherLoaded ? 

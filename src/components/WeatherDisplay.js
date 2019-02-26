@@ -28,10 +28,13 @@ class WeatherDisplay extends Component {
 			} = this.props;
 		const weatherIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
 		console.log('weather', weather);
+		const date = new Date(weather.dt*10000);
+		const day = date.getDate()
+		const month = date.getMonth();
 		return(
-
 		<div>
 			<div style={weatherStyles}>
+			<div>{weather.dt_txt}</div>
 				<img 
 					src={weatherIcon} 
 					width='60px'

@@ -80,7 +80,7 @@ export function LoadWeatherData(WrappedComponent){
 					currentWeatherLoaded={this.state.currentWeatherLoaded}
 					forecastLoaded={this.state.forecastLoaded}
 					changeZipCode={this.changeZipCode}
-					searchZipCode={this.searchZipCode}
+					searchByZipCode={this.searchByZipCode}
 					zipCode={this.state.selectedCityZipCode}
 					weather={this.state.weather} 
 					forecast={this.state.forecast}
