@@ -1,5 +1,20 @@
 import React, { Component } from 'react';
-import {SearchCurrentWeatherByZipCode} from '../api/WeatherApiCalls';
+
+
+const weatherStyles = {
+	display: 'flex',
+	flexDirection: 'column',
+	borderColor: 'black',
+	borderWidth: '2px',
+	borderStyle: 'solid',
+	width: '10em',
+	height: '10em',
+	margin: '2em',
+	alignItems: 'center',
+};
+
+const imgStyles = {
+};
 
 
 class WeatherDisplay extends Component {
@@ -11,11 +26,19 @@ class WeatherDisplay extends Component {
 		const {
 			weather,
 			} = this.props;
-		const cityName = weather.name;
+		const weatherIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
+		console.log('weather', weather);
 		return(
+
 		<div>
-				<div>Current City {cityName}</div>
-				<div>Weather : {weather.weather[0].description}</div>
+			<div style={weatherStyles}>
+				<img 
+					src={weatherIcon} 
+					width='60px'
+					alt={weather.weather[0].main}/>
+				<div>{weather.weather[0].description}</div>
+				<div>{weather.main.temp} &#8457;</div>
+			</div>
 		</div>
 		)
 	}

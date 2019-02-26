@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import {SearchCurrentWeatherByZipCode} from './api/WeatherApiCalls';
+import {LoadWeatherData} from './api/WeatherApiCalls';
 import SearchBar						from './components/SearchBar';
 import WeatherDisplay						from './components/WeatherDisplay';
+import ForcastDisplay						from './components/ForcastDisplay';
 
 class App extends Component {
   render() {
 		const {
 			weather,
-			cityLoaded,
+			forecast,
+			currentWeatherLoaded,
+			forecastLoaded,
 			zipCode,
 			searchZipCode,
 			changeZipCode,
 			} = this.props;
+		console.log('forecast', forecast);
 		return (
 			<div>
 				<SearchBar 
@@ -20,9 +24,15 @@ class App extends Component {
 					searchZipCode={searchZipCode}
 					changeZipCode={changeZipCode}
 				/>
-				{cityLoaded ? 
+				<div>Current Weather For : <strong>{weather.name}</strong></div>
+				{currentWeatherLoaded ? 
 				<WeatherDisplay
 					weather={weather} />
+					: <div>Loading</div>
+				}
+				{forecastLoaded ? 
+				<ForcastDisplay
+					forecast={forecast} />
 					: <div>Loading</div>
 				}
 			</div>
@@ -30,4 +40,4 @@ class App extends Component {
 	}
 }
 
-export default SearchCurrentWeatherByZipCode(App);
+export default LoadWeatherData(App);
