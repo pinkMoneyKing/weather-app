@@ -11,6 +11,13 @@ const forcastWrapperStyles = {
 	// borderColor: 'pink'
 };
 
+const fullDayStyles = {
+	borderStyle: 'solid',
+	borderWidth: '2px',
+	borderColor: 'pink'
+
+};
+
 
 export default class ForcastDisplay extends Component {
 	constructor(props){
@@ -48,22 +55,22 @@ export default class ForcastDisplay extends Component {
 							<div key={index}>
 								<WeatherDisplay 
 									toggleFullDay={this.toggleFullDay}
+									showingFullDay={showingFullDay}
 									weather={value}/>
+								<div style={{
+									visibility: showingFullDay ? 'visible' : 'hidden'}}>
 								{object_entries.map((object_array, index) => {
 									if(object_array[0] === time_array[0]){
 										return object_array[1].map((weather_object, weather_index) => {
 									return (
-										<div 
-											key={weather_index}
-											style={{
-												visibility: showingFullDay ? 'visible' : 'hidden'
-												}}> 
-														<WeatherDisplay weather={weather_object} />
+										<div key={weather_index}>
+													<WeatherDisplay weather={weather_object} />
 										</div>
 									)
 										})
 									}
 								})}
+								</div>
 							</div>
 								)
 						}

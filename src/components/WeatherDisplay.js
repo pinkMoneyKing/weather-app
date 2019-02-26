@@ -35,7 +35,8 @@ class WeatherDisplay extends Component {
 		return(
 			<div
 				onClick={toggleFullDay}>
-			<div style={weatherStyles}>
+				<div 
+					style={weatherStyles}>
 			<div>{weather.dt_txt}</div>
 				<img 
 					src={weatherIcon} 
