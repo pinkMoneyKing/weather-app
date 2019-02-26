@@ -23,13 +23,12 @@ export default class ForcastDisplay extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			showingFullDay: false,
+			showFullDayForecast: false,
 			};
 		this.toggleFullDay = this.toggleFullDay.bind(this);
 		}
 	toggleFullDay(){
-		console.log('toggling state change');
-		this.setState({showingFullDay: !this.state.showingFullDay});
+		this.setState({showFullDayForecast: !this.state.showFullDayForecast});
 	}
 	render(){
 		const {forecast} = this.props;
@@ -41,7 +40,8 @@ export default class ForcastDisplay extends Component {
 				? date_object[time_array[0]].push(value)
 				: date_object[time_array[0]] = [value]
 		});
-		const showingFullDay = this.state.showingFullDay;
+		const showFullDayForecast = this.state.showFullDayForecast;
+		console.log(showFullDayForecast);
 		return (
 			<div>
 				<div><strong>Forecast Display</strong></div>
@@ -52,19 +52,24 @@ export default class ForcastDisplay extends Component {
 						const object_entries = Object.entries(date_object);
 						if(time_array[1] === "12:00:00"){
 							return (
-							<div key={index}>
+								<div 
+									key={index}>
 								<WeatherDisplay 
 									toggleFullDay={this.toggleFullDay}
-									showingFullDay={showingFullDay}
 									weather={value}/>
-								<div style={{
-									visibility: showingFullDay ? 'visible' : 'hidden'}}>
+								<div 
+									style={{ 
+										visibility: this.state.showFullDayForecast 
+										? 'visible' 
+									: 'hidden'}}>
 								{object_entries.map((object_array, index) => {
 									if(object_array[0] === time_array[0]){
 										return object_array[1].map((weather_object, weather_index) => {
 									return (
-										<div key={weather_index}>
-													<WeatherDisplay weather={weather_object} />
+										<div 
+											key={weather_index}>
+											<WeatherDisplay 
+												weather={weather_object} />
 										</div>
 									)
 										})
