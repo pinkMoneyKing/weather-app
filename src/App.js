@@ -1,8 +1,16 @@
-import React, { Component } from 'react';
-import {LoadWeatherData} from './api/WeatherApiCalls';
-import SearchBar						from './components/SearchBar';
+import React, { Component }			from 'react';
+import {LoadWeatherData}				from './api/WeatherWrapperComponent';
+import SearchBar								from './components/SearchBar';
 import WeatherDisplay						from './components/WeatherDisplay';
 import ForcastDisplay						from './components/ForcastDisplay';
+
+const AppStyles = {
+	marginTop: '2em',
+	marginBottom: '1em',
+	marginLeft: 'auto',
+	marginRight: 'auto',
+	width: '90%',
+}
 
 class App extends Component {
   render() {
@@ -15,9 +23,8 @@ class App extends Component {
 			searchByZipCode,
 			changeZipCode,
 			} = this.props;
-		console.log('forecast', forecast);
 		return (
-			<div>
+			<div style={AppStyles}>
 				<SearchBar 
 					weather={weather}
 					zipCode={zipCode}

@@ -1,5 +1,20 @@
 import React, { Component } from 'react';
 
+
+const SearchBarStyles = {
+	display: 'flex',
+	justifyContent: 'space-between',
+	alignContent: 'center',
+	marginBottom: '2em',
+	width: '50%',
+	marginLeft: 'auto',
+	marginRight: 'auto',
+	// borderStyle: 'solid',
+	// borderWidth: '2px',
+	// borderColor: 'pink',
+};
+
+
 class SearchBar extends Component {
 	constructor(props){
 		super(props);
@@ -17,22 +32,19 @@ class SearchBar extends Component {
 	}
 	render(){
 		const {
-			weather,
 			zipCode,
 			searchByZipCode,
 			changeZipCode,
 			} = this.props;
 		return(
-			<div>
+			<div style={SearchBarStyles}>
+				<div>Search for weather by zip code</div>
 				<form onSubmit={this.submitForm}>
-					<label>
-						Search By Zip Code
 						<input 
 							type="text" 
 							onChange={this.handleChange}
 							value={zipCode}
 							name="Zip Code" />
-					</label>
 					<input type="submit" value="Search" />
 				</form>
 			</div>

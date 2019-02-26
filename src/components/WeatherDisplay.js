@@ -25,14 +25,16 @@ class WeatherDisplay extends Component {
 	render(){
 		const {
 			weather,
+			toggleFullDay,
 			} = this.props;
 		const weatherIcon = `http://openweathermap.org/img/w/${weather.weather[0].icon}.png`;
-		console.log('weather', weather);
 		const date = new Date(weather.dt*10000);
 		const day = date.getDate()
 		const month = date.getMonth();
+		console.log(weather);
 		return(
-		<div>
+			<div
+				onClick={toggleFullDay}>
 			<div style={weatherStyles}>
 			<div>{weather.dt_txt}</div>
 				<img 

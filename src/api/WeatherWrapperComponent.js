@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+	CurrentWeatherByZipCode,
+	CurrentForecastByZipCode
+	} from './ApiCalls';
 
 export function LoadWeatherData(WrappedComponent){
 	return class extends Component {
@@ -17,6 +21,27 @@ export function LoadWeatherData(WrappedComponent){
 			this.changeZipCode = this.changeZipCode.bind(this);
 			this.searchByZipCode = this.searchByZipCode.bind(this);
 			this.loadWeatherData = this.loadWeatherData.bind(this);
+			this.setCurrentWeatherData = this.setCurrentWeatherData.bind(this);
+			this.setForecastData = this.setForecastData.bind(this);
+			this.setError = this.setError.bind(this);
+		}
+
+		setError(error){
+			this.setState({error});
+		};
+
+		setCurrentWeatherData(weather){
+			this.setState({
+				weather,
+				currentWeatherLoaded: true
+			});
+		}
+
+		setForecastData(forecast){
+			this.setState({
+				forecast,
+				forecastLoaded: true
+			});
 		}
 
 		loadWeatherData(url){
@@ -42,32 +67,19 @@ export function LoadWeatherData(WrappedComponent){
 				forecastLoaded: false,
 				currentWeatherLoaded: false
 				});
+
 			// Current Weather
-			fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${current_location}&units=imperial&APPID=2e6df9d6535a9357d1c523ac78374cf2`)
-			.then(res => res.json())
-			.then(
-				(result) => {
-					this.setState({
-						weather: result,
-						currentWeatherLoaded: true,
-						});
-					},
-				(error) => {
-					this.setState({error});
-					})
+			CurrentWeatherByZipCode(
+				current_location, 
+				this.setCurrentWeatherData, 
+				this.callbackError)
+
 			// Forcast
-			fetch(`http://api.openweathermap.org/data/2.5/forecast?zip=${current_location}&units=imperial&APPID=2e6df9d6535a9357d1c523ac78374cf2`)
-			.then(res => res.json())
-			.then(
-				(result) => {
-					this.setState({
-						forecast: result,
-						forecastLoaded: true,
-						});
-					},
-				(error) => {
-					this.setState({error});
-					})
+			CurrentForecastByZipCode(
+				current_location,
+				this.setForecastData,
+				this.callbackError
+			);
 		};
 
 		componentDidMount(){
