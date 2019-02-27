@@ -47,11 +47,10 @@ const cityNameStyles = {
 
 const dateImageTempStyles = {
 	display: 'flex',
-	// borderColor: 'black',
-	// borderWidth: '2px',
-	// borderStyle: 'solid',
+	justifyContent: 'center',
+	flexDirection: 'column',
+	alignItems: 'center',
 };
-
 
 class WeatherDisplay extends Component {
 	constructor(props){
@@ -71,7 +70,6 @@ class WeatherDisplay extends Component {
 			<div 
 				style={weatherStyles}>
 				<div style={dateImageTempStyles}>
-					<div>
 						<div
 							style={nameStyles}>
 								{weather.name}
@@ -90,7 +88,6 @@ class WeatherDisplay extends Component {
 							height='60px'
 							width='50px'
 							alt={weather.weather[0].main}/>
-					</div>
 						</div>
 						{/*<div onClick={toggleFullDay}>
 							<div style={weatherStyles}>

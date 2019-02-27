@@ -2,6 +2,7 @@ import React, { Component }			from 'react';
 import {LoadWeatherData}				from './api/WeatherWrapperComponent';
 import TopLevelComponent				from './components/TopLevelComponent';
 import BottomLevelComponent			from './components/BottomLevelComponent';
+import HourForecastDisplay			from './components/HourForecastDisplay';
 
 const AppStyles = {
 	display: 'flex',
@@ -33,6 +34,7 @@ class App extends Component {
 			} = this.props;
 		console.log(weather);
 		return (
+			<div>
 			<div style={AppStyles}>
 				{
 					currentWeatherLoaded 
@@ -56,6 +58,8 @@ class App extends Component {
 						<div>loading</div>
 				}
 			</div>
+			<HourForecastDisplay />
+		</div>
 		);
 	}
 }
