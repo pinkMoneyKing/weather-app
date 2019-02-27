@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 
 const SearchBarStyles = {
 	display: 'flex',
-	justifyContent: 'space-between',
-	alignContent: 'center',
+	// justifyContent: 'space-between',
+	// alignContent: 'center',
 	marginBottom: '2em',
 	width: '50%',
-	marginLeft: 'auto',
-	marginRight: 'auto',
+	// marginLeft: 'auto',
+	// marginRight: 'auto',
 	// borderStyle: 'solid',
 	// borderWidth: '2px',
 	// borderColor: 'pink',

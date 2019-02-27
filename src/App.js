@@ -1,8 +1,7 @@
 import React, { Component }			from 'react';
 import {LoadWeatherData}				from './api/WeatherWrapperComponent';
-import SearchBar								from './components/SearchBar';
-import WeatherDisplay						from './components/WeatherDisplay';
-import ForcastDisplay						from './components/ForcastDisplay';
+import TopLevelComponent				from './components/TopLevelComponent';
+import BottomLevelComponent			from './components/BottomLevelComponent';
 
 const AppStyles = {
 	display: 'flex',
@@ -17,7 +16,7 @@ const AppStyles = {
 	borderStyle: 'solid',
 	borderWidth: '.9px',
 	borderColor: 'rgb(223, 225, 229)',
-	borderTopRaidus: '8px',
+	borderRadius: '8px',
 }
 
 
@@ -35,22 +34,26 @@ class App extends Component {
 		console.log(weather);
 		return (
 			<div style={AppStyles}>
-				<SearchBar 
-					weather={weather}
-					zipCode={zipCode}
-					changeZipCode={changeZipCode}
-					searchByZipCode={searchByZipCode}
-				/>
+				{
+					currentWeatherLoaded 
+					? 
+						<TopLevelComponent
+							weather={weather}
+							zipCode={zipCode}
+							changeZipCode={changeZipCode}
+							searchByZipCode={searchByZipCode}/>
 
-				{currentWeatherLoaded ? 
-				<WeatherDisplay
-					weather={weather} />
-					: <div>Loading</div>
+					: 
+						<div>loading</div>
 				}
-				{forecastLoaded ? 
-				<ForcastDisplay
-					forecast={forecast} />
-					: <div>Loading</div>
+				{
+					forecastLoaded
+					? 
+						<BottomLevelComponent
+							forecast={forecast}/>
+
+					: 
+						<div>loading</div>
 				}
 			</div>
 		);
