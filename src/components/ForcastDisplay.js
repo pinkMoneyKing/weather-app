@@ -55,6 +55,16 @@ const fontStyles = {
 	fontFamily: 'Roboto, arial, sans-serif',
 }
 
+const titleStyles = {
+	marginLeft: '2em',
+	marginBottom: '.5em',
+	color: '#878787',
+	fontFamily: 'Roboto, arial, sans-serif',
+	fontSize: '20px',
+	fontWeight: 'bold',
+
+};
+
 
 export default class ForcastDisplay extends Component {
 	constructor(props){
@@ -120,7 +130,9 @@ render(){
 	return (
 		<div 
 			style={forcastWrapperStyles}>
-			<div>Forecast Display</div>
+			<div style={titleStyles}>
+				5 Day Forecast
+			</div>
 			<div style={daysWrapper}>
 			{forecast.list.map((value, index) => {
 				const dateTime = new Date(value.dt* 1000);
