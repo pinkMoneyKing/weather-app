@@ -24,63 +24,79 @@ export default class ForcastDisplay extends Component {
 		super(props);
 		this.state = {
 			showFullDayForecast: false,
+			dateArray: [],
+			dateForecastObject: {},
 			};
 		this.toggleFullDay = this.toggleFullDay.bind(this);
-		}
+		// this.pushObjectToDateArray = pushObjectToDateArray.bind(this);
+	}
+
+	pushObjectToDateArray(object){
+		this.setState(state => ({
+			dateArray: [...state.dateArray, object]
+		}));
+		// const newDateArray = this.state.dateArray.concat(object)
+		// this.setState({dateArray: [newDateArray]});
+	}
+	addDatesToForecastObject(datesObject){
+		this.setState({
+			dateForecastObject: {
+				...this.state.dateForecastObject,
+				...datesObject
+			}
+		})
+	}
+
 	toggleFullDay(){
 		this.setState({showFullDayForecast: !this.state.showFullDayForecast});
 	}
-	render(){
+
+	componentDidMount(){
 		const {forecast} = this.props;
-		const weatherForcast = [];
 		let date_object = {};
 		forecast.list.map((value, index) => {
 			const time_array = value.dt_txt.split(' ');
+			// this.pushObjectToDateArray(time_array);
 			date_object[time_array[0]] 
-				? date_object[time_array[0]].push(value)
-				: date_object[time_array[0]] = [value]
+			? date_object[time_array[0]].push(value)
+			: date_object[time_array[0]] = [value]
+			this.addDatesToForecastObject(date_object);
+			});
+		// });
+	// object_entries.map((object_array, index) => {
+	// 	if(object_array[0] === time_array[0]){
+	// 		return object_array[1].map((weather_object, weather_index) => {
+	}
+
+render(){
+	const {forecast} = this.props;
+	const weatherForcast = [];
+	let date_object = {};
+	forecast.list.map((value, index) => {
+		const time_array = value.dt_txt.split(' ');
+		date_object[time_array[0]] 
+		? date_object[time_array[0]].push(value)
+		: date_object[time_array[0]] = [value]
 		});
-		const showFullDayForecast = this.state.showFullDayForecast;
-		console.log(showFullDayForecast);
-		return (
-			<div>
-				<div><strong>Forecast Display</strong></div>
-				<div 
-					style={forcastWrapperStyles}>
-					{forecast.list.map((value, index) => {
-						const time_array = value.dt_txt.split(' ');
-						const object_entries = Object.entries(date_object);
-						if(time_array[1] === "12:00:00"){
-							return (
-								<div 
-									key={index}>
-								<WeatherDisplay 
-									toggleFullDay={this.toggleFullDay}
-									weather={value}/>
-								<div 
-									style={{ 
-										visibility: this.state.showFullDayForecast 
-										? 'visible' 
-									: 'hidden'}}>
-								{object_entries.map((object_array, index) => {
-									if(object_array[0] === time_array[0]){
-										return object_array[1].map((weather_object, weather_index) => {
-									return (
-										<div 
-											key={weather_index}>
-											<WeatherDisplay 
-												weather={weather_object} />
-										</div>
-									)
-										})
-									}
-								})}
-								</div>
-							</div>
-								)
-						}
-					})}
-				</div>
+	const showFullDayForecast = this.state.showFullDayForecast;
+	console.log(this.state.dateForecastObject);
+	return (
+		<div 
+			style={forcastWrapperStyles}>
+			<div>Forecast Display</div>
+			{forecast.list.map((value, index) => {
+				const time_array = value.dt_txt.split(' ');
+				if(time_array[1] === "12:00:00"){
+					return (
+						<div 
+							key={index}>
+							<WeatherDisplay 
+								toggleFullDay={this.toggleFullDay}
+								weather={value}/>
+						</div>
+						)
+					}
+				})}
 			</div>
 		)
 	}
