@@ -3,15 +3,18 @@ import React, { Component } from 'react';
 
 const SearchBarStyles = {
 	display: 'flex',
-	// justifyContent: 'space-between',
-	// alignContent: 'center',
-	marginBottom: '2em',
-	width: '50%',
+	justifyContent: 'space-between',
+	alignContent: 'center',
+	padding: '.5em',
+	color: '#878787',
+	fontFamily: 'Roboto, arial, sans-serif',
+	// margin: '1em',
+	// width: '50%',
 	// marginLeft: 'auto',
 	// marginRight: 'auto',
-	// borderStyle: 'solid',
-	// borderWidth: '2px',
-	// borderColor: 'pink',
+	borderStyle: 'solid',
+	borderWidth: '1px',
+	borderColor: 'rgb(223, 225, 229)',
 };
 
 
@@ -38,7 +41,7 @@ class SearchBar extends Component {
 			} = this.props;
 		return(
 			<div style={SearchBarStyles}>
-				<div>Search for weather by zip code</div>
+				<div>Weather by Zip Code</div>
 				<form onSubmit={this.submitForm}>
 						<input 
 							type="text" 

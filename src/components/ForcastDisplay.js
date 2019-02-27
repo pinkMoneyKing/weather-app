@@ -5,6 +5,7 @@ import WeatherDisplay from './WeatherDisplay';
 const forcastWrapperStyles = {
 	display: 'flex',
 	flexWrap: 'wrap',
+	flexDirection: 'column',
 	width: '100%',
 	// borderStyle: 'solid',
 	// borderWidth: '2px',
@@ -16,6 +17,19 @@ const fullDayStyles = {
 	borderWidth: '2px',
 	borderColor: 'pink'
 
+};
+
+const dayStyles = {
+	display: 'flex',
+	borderStyle: 'solid',
+	borderWidth: '2px',
+	borderColor: 'rgb(223, 225, 229)',
+};
+const daysWrapper = {
+	display: 'flex',
+	// borderStyle: 'solid',
+	// borderWidth: '2px',
+	// borderColor: 'rgb(223, 225, 229)',
 };
 
 
@@ -84,20 +98,24 @@ render(){
 		<div 
 			style={forcastWrapperStyles}>
 			<div>Forecast Display</div>
+			<div style={daysWrapper}>
 			{forecast.list.map((value, index) => {
 				const time_array = value.dt_txt.split(' ');
 				if(time_array[1] === "12:00:00"){
 					return (
 						<div 
+							style={dayStyles}
 							key={index}>
-							<WeatherDisplay 
-								toggleFullDay={this.toggleFullDay}
-								weather={value}/>
+							<div>{value.dt_txt}</div>
 						</div>
 						)
 					}
 				})}
+				</div>
 			</div>
 		)
 	}
 }
+							// <WeatherDisplay 
+							// 	toggleFullDay={this.toggleFullDay}
+							// 	weather={value}/>
