@@ -45,12 +45,6 @@ const descripitionStyles = {
 const cityNameStyles = {
 };
 
-const cityDateWeatherWrapperStyles = {
-	// display: 'flex',
-	// flexDirection: 'column',
-};
-
-
 const dateImageTempStyles = {
 	display: 'flex',
 	// borderColor: 'black',
@@ -77,7 +71,7 @@ class WeatherDisplay extends Component {
 			<div 
 				style={weatherStyles}>
 				<div style={dateImageTempStyles}>
-					<div style={cityDateWeatherWrapperStyles}>
+					<div>
 						<div
 							style={nameStyles}>
 								{weather.name}
