@@ -6,23 +6,6 @@ import HourForecastDisplay			from './components/HourForecastDisplay';
 import MainComponent						from './components/MainComponent';
 
 
-const AppStyles = {
-	display: 'flex',
-	flexDirection: 'column',
-	marginTop: '2em',
-	marginBottom: '1em',
-	marginLeft: 'auto',
-	marginRight: 'auto',
-	width: '60%',
-	height: '100%',
-
-	borderStyle: 'solid',
-	borderWidth: '.9px',
-	borderColor: 'rgb(223, 225, 229)',
-	borderRadius: '8px',
-}
-
-
 class App extends Component {
 
 	render() {

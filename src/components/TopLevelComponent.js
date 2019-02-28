@@ -1,16 +1,10 @@
-import React, { Component }			from 'react';
+import React, { PureComponent }			from 'react';
 import SearchBar								from './SearchBar';
 import WeatherDisplay						from './WeatherDisplay';
+import '../scss/TopLevelComponent.scss';
 
 
-const componentWrapper = {
-	display: 'flex',
-	flexDirection: 'column',
-	justifyContent: 'flex-start'
-}
-
-
-export default class TopLevelComponent extends Component {
+export default class TopLevelComponent extends PureComponent {
 	constructor(props){
 		super(props)
 			this.state = {};
@@ -19,15 +13,12 @@ export default class TopLevelComponent extends Component {
 	render(){
 		const {
 			weather,
-			forecast,
-			currentWeatherLoaded,
-			forecastLoaded,
 			zipCode,
 			searchByZipCode,
 			changeZipCode,
 			} = this.props;
 		return(
-			<div style={componentWrapper}>
+			<div className='searchBarWeatherDisplayWrapper'>
 				<SearchBar 
 					weather={weather}
 					zipCode={zipCode}

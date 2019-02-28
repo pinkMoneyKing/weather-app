@@ -1,0 +1,15 @@
+@import '../varibales.scss';
+
+
+.searchBar {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	padding: .5em;
+	color: $primary-color;
+	font-family: $primary-font;
+	border: $grey-border;
+	border-radius: 8px;
+};
+
+

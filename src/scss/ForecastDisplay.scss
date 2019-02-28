@@ -1,0 +1,53 @@
+@import '../varibales.scss';
+
+.pageWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	width: 100%;
+};
+
+.forecastWrapper {
+	display: flex;
+	width: 100%;
+};
+
+.forecastBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: $grey-border;
+	border-radius: 8px;
+	width: 100%;
+};
+
+.date {
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 20px;
+}
+
+
+.descripition{
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.temp {
+	color: $primary-color;
+	font-family: $primary-font;
+};
+
+
+.title {
+	margin: 0 auto;
+	margin-bottom: .5em;
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 30px;
+	font-weight: bold;
+};
+

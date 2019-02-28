@@ -1,0 +1,44 @@
+@import '../varibales.scss';
+
+
+.hourPageWrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
+};
+
+.hourForecastTime {
+	display: flex;
+	justify-content: center;
+	color: $primary-color;
+	font-family: $primary-font;
+};
+
+.hourForecastBox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-right: 2px;
+	margin-top: 2px;
+	width: 10em;
+	border: $grey-border;
+	border-radius: 8px;
+};
+
+.hourForecastDescription{
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+.hourForecastTemp {
+	color: $primary-color;
+	font-family: $primary-font;
+}

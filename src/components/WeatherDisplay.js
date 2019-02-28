@@ -1,58 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import '../scss/WeatherDisplay.scss';
 
 
-const weatherStyles = {
-	display: 'flex',
-	flexDirection: 'column',
-	// borderColor: 'black',
-	// borderWidth: '2px',
-	// borderStyle: 'solid',
-	width: '50em',
-	// height: '10em',
-	margin: '2em',
-	
-	alignItems: 'flex-start',
-};
-
-const fontStyles = {
-	color: '#878787',
-	fontFamily: 'Roboto, arial, sans-serif',
-}
-
-const nameStyles = {
-	color: '#878787',
-	fontFamily: 'Roboto, arial, sans-serif',
-	fontSize: '40px',
-	fontWeight: 'bold',
-}
-
-const dateStyles = {
-	color: '#878787',
-	fontFamily: 'Roboto, arial, sans-serif',
-	fontSize: '20px',
-	borderBottomColor: 'black',
-	borderBottomWidth: '.9px',
-	borderBottomStyle: 'solid',
-}
-
-const descripitionStyles = {
-	color: '#878787',
-	fontFamily: 'Roboto, arial, sans-serif',
-	fontSize: '20px',
-	fontWeight: 'bold',
-}
-
-const cityNameStyles = {
-};
-
-const dateImageTempStyles = {
-	display: 'flex',
-	justifyContent: 'center',
-	flexDirection: 'column',
-	alignItems: 'center',
-};
-
-class WeatherDisplay extends Component {
+class WeatherDisplay extends PureComponent {
 	constructor(props){
 		super(props)
 		this.state = {};
@@ -68,34 +18,27 @@ class WeatherDisplay extends Component {
 		console.log(dateTimeArray);
 		return(
 			<div 
-				style={weatherStyles}>
-				<div style={dateImageTempStyles}>
+				className='weatherDisplayWrapper'>
+				<div className='dateImageTempStyles'>
 						<div
-							style={nameStyles}>
+							className='displayName'>
 								{weather.name}
 						</div>
 						<div 
-							style={dateStyles}>
+							className='displayDate'>
 								{dateTimeArray[0]} {dateTimeArray[4]} {dateTimeArray[5]}
 						</div>
 						<div 
-							style={descripitionStyles}>
+							className='displayDescripition'>
 							{weather.weather[0].description}
 						</div>
-						<div style={fontStyles}>{weather.main.temp} &#8457;</div>
+						<div className='displayTemp'>{weather.main.temp} &#8457;</div>
 						<img 
 							src={weatherIcon} 
 							height='60px'
 							width='50px'
 							alt={weather.weather[0].main}/>
 						</div>
-						{/*<div onClick={toggleFullDay}>
-							<div style={weatherStyles}>
-								<div>{weather.dt_txt}</div>
-								<div>{weather.weather[0].description}</div>
-							</div>
-						</div>
-						*/}
 					</div>
 			)
 		}

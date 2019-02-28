@@ -1,0 +1,13 @@
+.TopBottomComponent {
+	display: flex;
+	flex-direction: column;
+	margin-top: 2em;
+	margin-bottom: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	height: 100%;
+
+	border: solid .9px rgb(223, 225, 229);
+	border-radius: 8px;
+}

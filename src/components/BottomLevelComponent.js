@@ -1,18 +1,9 @@
-import React, { Component }			from 'react';
-import ForcastDisplay						from './ForcastDisplay';
+import React, { PureComponent }			from 'react';
+import ForecastDisplay						from './ForcastDisplay';
+import '../scss/BottomLevelComponent.scss';
 
 
-const componentWrapper = {
-	display: 'flex',
-	justifyContent: 'flex-start',
-	// borderStyle: 'solid',
-	// borderWidth: '.9px',
-	// borderColor: 'rgb(223, 225, 229)',
-	// borderRadius: '8px',
-}
-
-
-export default class BottomLevelComponent extends Component {
+export default class BottomLevelComponent extends PureComponent {
 	constructor(props){
 		super(props)
 			this.state = {};
@@ -24,8 +15,8 @@ export default class BottomLevelComponent extends Component {
 			selectDate,
 			} = this.props;
 		return(
-			<div style={componentWrapper}>
-				<ForcastDisplay
+			<div className='BottomLevelComponent'>
+				<ForecastDisplay
 					selectDate={selectDate}
 					forecast={forecast} />
 			</div>

@@ -1,24 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import '../scss/SearchBar.scss';
 
 
-const SearchBarStyles = {
-	display: 'flex',
-	justifyContent: 'space-between',
-	alignContent: 'center',
-	padding: '.5em',
-	color: '#878787',
-	fontFamily: 'Roboto, arial, sans-serif',
-	// margin: '1em',
-	// width: '50%',
-	// marginLeft: 'auto',
-	// marginRight: 'auto',
-	borderStyle: 'solid',
-	borderWidth: '1px',
-	borderColor: 'rgb(223, 225, 229)',
-};
-
-
-class SearchBar extends Component {
+class SearchBar extends PureComponent {
 	constructor(props){
 		super(props);
 		this.state = null;
@@ -40,7 +24,7 @@ class SearchBar extends Component {
 			changeZipCode,
 			} = this.props;
 		return(
-			<div style={SearchBarStyles}>
+			<div className='searchBar'>
 				<div>Weather by Zip Code</div>
 				<form onSubmit={this.submitForm}>
 						<input 

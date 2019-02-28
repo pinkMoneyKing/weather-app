@@ -1,0 +1,42 @@
+@import '../varibales.scss';
+
+.weatherDisplayWrapper {
+	display: flex;
+	flex-direction: column;
+	width: 50em;
+	margin: 2em;
+	align-items: flex-start;
+};
+
+.displayTemp {
+	color: $primary-color;
+	font-family: $primary-font;
+}
+
+.displayName {
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.displayDate {
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 20px;
+	border-bottom: solid .9px grey;
+}
+
+.displayDescripition {
+	color: $primary-color;
+	font-family: $primary-font;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.dateImageTempStyles {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+};

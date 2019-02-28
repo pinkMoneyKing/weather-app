@@ -1,41 +1,23 @@
-import React, { Component }			from 'react';
+import React, { PureComponent }	from 'react';
 import TopLevelComponent				from './TopLevelComponent';
 import BottomLevelComponent			from './BottomLevelComponent';
 import HourForecastDisplay			from './HourForecastDisplay';
-
-const MainComponentStyles = {
-	display: 'flex',
-	flexDirection: 'column',
-	marginTop: '2em',
-	marginBottom: '1em',
-	marginLeft: 'auto',
-	marginRight: 'auto',
-	width: '60%',
-	height: '100%',
-
-	borderStyle: 'solid',
-	borderWidth: '.9px',
-	borderColor: 'rgb(223, 225, 229)',
-	borderRadius: '8px',
-}
+import '../scss/MainComponent.scss';
 
 
-class MainComponent extends Component {
+class MainComponent extends PureComponent {
 	constructor(props){
 		super(props)
 		this.state = {
-			dateArray: [],
 			dateForecastObject: {},
 			selectedDateObject: '',
 			showingHourlyForcast: false
 		};
 		this.toggleFullDay = this.toggleFullDay.bind(this);
 		this.selectDate = this.selectDate.bind(this);
-		this.pushObjectToDateArray = this.pushObjectToDateArray.bind(this);
 	}
 
 	selectDate(selectedDate){
-		console.log(selectedDate);
 		/*
 		 * TODO:
 		 * showingHourlyForcast should: 
@@ -53,13 +35,6 @@ class MainComponent extends Component {
 		}
 	}
 
-	pushObjectToDateArray(object){
-		this.setState(state => ({
-			dateArray: [...state.dateArray, object]
-		}));
-		// const newDateArray = this.state.dateArray.concat(object)
-		// this.setState({dateArray: [newDateArray]});
-	}
 	addDatesToForecastObject(datesObject){
 		this.setState({
 			dateForecastObject: {
@@ -78,30 +53,28 @@ class MainComponent extends Component {
 	componentDidMount(){
 		const {forecast} = this.props;
 		let date_object = {};
+		// Create an organized object of hourly forecasts
 		forecast.list.map((value, index) => {
 			const time_array = value.dt_txt.split(' ');
-			// this.pushObjectToDateArray(time_array);
 			date_object[time_array[0]] 
-			? date_object[time_array[0]].push(value)
-			: date_object[time_array[0]] = [value]
+				? date_object[time_array[0]].push(value)
+				: date_object[time_array[0]] = [value]
+
 			this.addDatesToForecastObject(date_object);
-			});
+		});
 	}
 
 	render() {
 		const {
 			weather,
 			forecast,
-			currentWeatherLoaded,
-			forecastLoaded,
 			zipCode,
 			searchByZipCode,
 			changeZipCode,
 			} = this.props;
-		console.log(this.state.dateForecastObject);
 		return (
 			<div>
-				<div style={MainComponentStyles}>
+				<div className="TopBottomComponent">
 					<TopLevelComponent
 						weather={weather}
 						zipCode={zipCode}
