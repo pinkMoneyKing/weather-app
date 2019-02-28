@@ -17,6 +17,8 @@ const pageWrapperStyles = {
 const timeStyle = {
 	display: 'flex',
 	justifyContent: 'center',
+	color: '#878787',
+	fontFamily: 'Roboto, arial, sans-serif',
 };
 
 const hourStyles = {
@@ -24,6 +26,7 @@ const hourStyles = {
 	flexDirection: 'column',
 	justifyContent: 'center',
 	alignItems: 'center',
+	marginRight: '2px',
 	width: '10em',
 	// width: '100%',
 	borderStyle: 'solid',
