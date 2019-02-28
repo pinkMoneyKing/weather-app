@@ -21,10 +21,12 @@ export default class BottomLevelComponent extends Component {
 	render(){
 		const {
 			forecast,
+			selectDate,
 			} = this.props;
 		return(
 			<div style={componentWrapper}>
 				<ForcastDisplay
+					selectDate={selectDate}
 					forecast={forecast} />
 			</div>
 		);

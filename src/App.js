@@ -3,6 +3,8 @@ import {LoadWeatherData}				from './api/WeatherWrapperComponent';
 import TopLevelComponent				from './components/TopLevelComponent';
 import BottomLevelComponent			from './components/BottomLevelComponent';
 import HourForecastDisplay			from './components/HourForecastDisplay';
+import MainComponent						from './components/MainComponent';
+
 
 const AppStyles = {
 	display: 'flex',
@@ -22,7 +24,8 @@ const AppStyles = {
 
 
 class App extends Component {
-  render() {
+
+	render() {
 		const {
 			weather,
 			forecast,
@@ -32,36 +35,25 @@ class App extends Component {
 			searchByZipCode,
 			changeZipCode,
 			} = this.props;
-		console.log(weather);
 		return (
 			<div>
-			<div style={AppStyles}>
-				{
-					currentWeatherLoaded 
-					? 
-						<TopLevelComponent
+					{
+						currentWeatherLoaded && forecastLoaded
+						? 
+						<MainComponent
+							forecast={forecast}
 							weather={weather}
 							zipCode={zipCode}
 							changeZipCode={changeZipCode}
 							searchByZipCode={searchByZipCode}/>
 
-					: 
-						<div>loading</div>
-				}
-				{
-					forecastLoaded
-					? 
-						<BottomLevelComponent
-							forecast={forecast}/>
-
-					: 
-						<div>loading</div>
-				}
-			</div>
-			<HourForecastDisplay />
-		</div>
-		);
+							: 
+							<div>loading</div>
+						}
+					</div>
+				);
+		}
 	}
-}
+
 
 export default LoadWeatherData(App);
